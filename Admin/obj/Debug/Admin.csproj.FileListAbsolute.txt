@@ -1,0 +1,8 @@
+D:\UMusic\UMusic\Admin\bin\Admin.dll.config
+D:\UMusic\UMusic\Admin\bin\Admin.dll
+D:\UMusic\UMusic\Admin\bin\Admin.pdb
+D:\UMusic\UMusic\Admin\obj\Debug\Admin.csprojResolveAssemblyReference.cache
+D:\UMusic\UMusic\Admin\obj\Debug\Admin.dll
+D:\UMusic\UMusic\Admin\obj\Debug\Admin.pdb
+D:\UMusic\UMusic\Admin\bin\Highcharts.Web.Mvc.dll
+D:\UMusic\UMusic\Admin\bin\Highcharts.Web.Mvc.xml

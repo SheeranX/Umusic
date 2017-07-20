@@ -1,0 +1,43 @@
+﻿@model  PagedList.IPagedList<UMusic.Models.tb_artist>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ArtistLooking";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div style="background: url(/Content/background/connect.jpg); ">
+    <div class="container profile_container">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                <li class="active">音乐专辑</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var artist in Model)
+            {
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <a href="/Home/Artist?Id=@artist.artistId">
+                            <img src="@artist.imageUrl">
+                        </a>
+                        <div class="caption">
+                            <p><a href="/Home/Artist?Id=@artist.artistId">@artist.artistName</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="atPageHelp">
+            @Html.PagedListPager(Model, page => Url.Action("ArtistLooking", new {page}))
+        </div>
+    </div>
+</div>
+<style>
+    .atPageHelp {
+        margin-left: 330px;
+        margin-bottom: 50px;
+    }
+</style>

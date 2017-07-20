@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div class="container chat">
+    <div class="row">
+        <form method="post" onsubmit="ltgo(); return false;">
+            <div class="content">
+                <div class="chatroom">
+                    <div id="talkbox">
+                        <div id="liaotian">
+                            <div class="bot">
+                                <span class="bot_img"></span>
+                                <span class="bot_msg">
+                                    Hi~~~,和我聊聊天吧，悄悄告诉你,要输入关键字才行
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sendbox">
+                        <input type="text" name="lt_put" value=" " class="sendRoom" id="lt_put" />
+                        <input type="button" name="name" value="发送" class="btnRoom" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

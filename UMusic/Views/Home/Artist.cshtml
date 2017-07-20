@@ -1,0 +1,68 @@
+﻿@model UMusic.Models.ArtistDetails
+@{
+    ViewBag.Title = "Artist";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div id="bg_artistDetails" style="background: url(/Content/background/site-background-image-file.jpg)">
+    <div class="container details_container">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>@Html.ActionLink("主页","Index","Home")</li>
+                <li><a href="#">艺术家</a></li>
+                <li class="active">@Model.artistSingle.artistName</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container profile_media">
+        <div class="row">
+            <div class="col-md-10 info_left">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="@Model.artistSingle.imageUrl" alt="媒体对象" width="140px" height="140px">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">@Model.artistSingle.artistName</h4>
+                         @Model.artistSingle.decription
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="center-block">
+                    <h5 style="text-align: center;">相似歌手</h5>
+                </div>
+                <div>
+                    @foreach(var artist in Model.artistModel){
+                        <a href="/Home/Artist?Id=@artist.artistId"><img src="@artist.imageUrl" width="80px" height="80px"></a>
+                    }
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h4>热门专辑</h4>
+            </div>
+            <div class="row">
+                <div class="row album">
+                    @foreach(var album in Model.albumModel){
+                     <div class="col-sm-6 col-md-3 spacing">
+                        <a href="/Home/Product?Id=@album.albumId">
+                            <img src="@album.imagesUrl" width="200px" height="200px">
+                        </a>
+                     </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .spacing {
+        margin-top:40px;
+        margin-bottom:10px;
+    }
+</style>

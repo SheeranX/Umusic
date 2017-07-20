@@ -1,0 +1,216 @@
+﻿@model UMusic.Models.ListModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<!-- banner begin-->
+<div id="bg_body">
+    <div class="container navBanner">
+        <div class="row banner">
+            <div id='carousel-ex-generic' class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-ex-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-ex-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-ex-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-ex-generic" data-slide-to="3"></li>
+                </ol>
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="/Home/Artist?id=310017"><img src="..\imgs\artist\UMG_Web_CROP_FINAL_Sam_Smith1.jpg" class="img-responsive"></a>
+                        <div class="carousel-caption">
+                            <h4>Sam Smith(山姆.史密斯)</h4>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="/Home/Artist?id=310021"><img src="..\imgs\artist\TS_Banner_1989Live_Site.jpg" class="img-responsive"></a>
+                        <div class="carousel-caption">
+                            <h4>Taylor.Swift(泰勒.斯威夫特)</h4>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="/Home/Artist?id=310008"><img src="..\imgs\artist\EdSheeran_ATLREC_ArtistHeader1900x700v3.jpg" class="img-responsive"></a>
+                        <div class="carousel-caption">
+                            <h4>Ed Sheeran(艾德.希兰)</h4>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href=""><img src="..\imgs\artist\Gwen-Stefani_2016_P2.jpg" class="img-responsive"></a>
+                        <div class="carousel-caption">
+                            <h4>Gwen.Stefani(格温.史蒂夫尼)</h4>
+                        </div>
+                    </div>
+                </div>
+                <a href="#carousel-ex-generic" class="right carousel-control" data-slide='next' role='button'>
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a href="#carousel-ex-generic" class="left carousel-control" role="button" data-slide='prev'>
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden='true'></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- banner end -->
+    <!-- content begin -->
+    <div class="container">
+        <div class="row singleAlbum">
+            <div class="col-sm-6 col-md-6">
+                <a href="" class="thumbnail">
+                    <img src="..\imgs\album\sohu.jpg">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <a href="" class="thumbnail">
+                    <img src="..\imgs\album\zxj.jpg">
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pull-left">
+                    <h4>音乐专辑</h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <h5><a href="/Home/Album" target="_blank">查看更多</a></h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @*@{
+                foreach (var albumInfo in Model.albumModel)
+                {
+                    <div class="col-sm-6 col-md-2 album">
+                        <a href="/Home/Product?Id=@albumInfo.albumId" class="thumbnail" target="_blank">
+                            <img src="@albumInfo.imagesUrl">
+                        </a>
+
+                    </div>
+                }
+
+            }*@
+            @foreach (var albumInfo in Model.albumModel)
+            {
+            <div class="col-sm-6 col-md-2 album">
+                <div class="banneral">
+
+                    <a href="/Home/Product?Id=@albumInfo.albumId" target="_blank">
+
+                        <img alt="The Best Designs" src="@albumInfo.imagesUrl" width="150px" height="150px" />
+
+                    </a>
+
+                    <p class="companyInfo">《@albumInfo.albumName》</p>
+
+                    <div class="cornerTL"></div>
+
+                    <div class="cornerTR"></div>
+
+                    <div class="cornerBL"></div>
+
+                    <div class="cornerBR"></div>
+
+                </div>
+
+            </div>
+            }
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="pull-left">
+                            <h4>艺术家</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <h5><a href="/Home/ArtistLooking" target="_blank">查看更多</a></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @*@{
+
+                    foreach(var artistInfo in Model.artistModel){
+                    <div class="col-sm-6 col-md-3">
+                       <div class="thumbnail">
+                           <a href="/Home/Artist?Id=@artistInfo.artistId" target="_blank">
+                               <img src="@artistInfo.imageUrl">
+                           </a>
+                           <div class="caption">
+                               <p>@artistInfo.artistName</p>
+                           </div>
+                       </div>
+                    </div>
+
+                    }
+
+                }*@
+                    @foreach (var artistInfo in Model.artistModel)
+                    {
+                        <div class="col-sm-6 col-md-3">
+                            <div class="single-member effect-2">
+                                <div class="member-image">
+                                    <img src="@artistInfo.imageUrl" alt="Member">
+                                </div>
+                                <div class="member-info">
+                                    <h3><a href="/Home/Artist?Id=@artistInfo.artistId" target="_blank">@artistInfo.artistName</a></h3>
+                                    <h5>&nbsp;</h5>
+                                    <p class="description">@artistInfo.decription</p>
+                                </div>
+                                <div class="social-touch">
+                                    <a class="fb-touch" href="#"></a>
+                                    <a class="tweet-touch" href="#"></a>
+                                    <a class="linkedin-touch" href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- content end -->
+                <div class="container">
+                    <div class="row brand">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="">
+                                    <img src="..\imgs\logo\big_machine.PNG">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="">
+                                    <img src="..\imgs\logo\qq.PNG">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="">
+                                    <img src="..\imgs\logo\kugou.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="">
+                                    <img src="..\imgs\logo\Universal.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <style>
+    </style>
+    @*<script>
+        $(document).ready(function () {
+
+          
+        });
+    </script>*@

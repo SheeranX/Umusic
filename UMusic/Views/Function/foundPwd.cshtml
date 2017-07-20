@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "foundPwd";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+<div class="fpwd">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="fdialog">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">找回密码</h3>
+                        </div>
+                        <form action="/" method="post" class="form-horizontal" id="foundForm">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">用户名</label>
+                                <div class="col-md-5">
+                                    <input type="text" name="fusername" value="" class="form-control" id="fusername" />
+                                </div>
+                                <p class="col-md-5" id="fusernameinfo">&nbsp;</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">邮箱</label>
+                                <div class="col-md-5">
+                                    <input type="text" name="email" value="" class="form-control" id="femail" />
+                                </div>
+                                <p class="col-md-5" id="femailinfo">&nbsp;</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">手机号</label>
+                                <div class="col-md-5">
+                                    <input type="text" name="fphone" value="" class="form-control" id="fphone" />
+                                </div>
+                                <p class="col-md-5" id="fphoneinfo">&nbsp;</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label"></label>
+                                <div class="col-md-5">
+                                    <input type="button" name="btnsubmit" value="提交" class="btn btn-primary" id="fbtnsubmit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

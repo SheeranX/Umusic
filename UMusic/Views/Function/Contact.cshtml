@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div class="contact">
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">建议/联系</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="contactFrom" action="/Function/Contact" method="post">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户名</label>
+                        <div class="col-md-3">
+                            <input type="text" name="username" class="form-control" id="conusername" required />
+                        </div>
+                        <img src="~/imgs/loading2.gif"alt="loading" width="20px" height="20px" class="imgLoading hidden"/>
+                        <span class="glyphicon glyphicon-ok valok text-success hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">建议</label>
+                        <div class="col-md-3">
+                            <textarea rows="4" cols="30" maxlength="140" id="comment" form="contactFrom" name="comment" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-md-3">
+                            <input type="submit" name="btnsubmit" class="btn btn-info" value="提交" required />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+</div>
+<style>
+    .contact {
+        margin-top:50px;
+        margin-bottom:10px;
+    }
+    .panel {
+        margin:50px;
+        height:400px;
+    }
+    .panel-body {
+        margin-top:20px;
+    }
+    #comment {
+        border: 1px solid #ccc;
+        padding-left: 5px;
+    }
+    .imgLoading {
+       margin-top:5px;
+    }
+    .valok {
+        margin-top:5px;
+    }
+</style>

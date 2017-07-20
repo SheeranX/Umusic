@@ -1,0 +1,371 @@
+﻿@model UMusic.Models.UserCenterModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div class="container user_container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="text-center">
+                <img src="..\imgs\header.png" width="120px" height="120px" class="img-circle" alt="img">
+                <p>Hi~ </p>
+            </div>
+            <hr>
+            <div class="list-group">
+                <a class="list-group-item" id="_userinfo">
+                    <p class="list-group-item-text text-center">个人信息</p>
+                </a>
+                <a class="list-group-item" id="_order">
+                    <p class="list-group-item-text text-center">订单管理</p>
+                </a>
+                <a class="list-group-item" id="_collection">
+                    <p class="list-group-item-text text-center">收藏夹</p>
+                </a>
+                <a class="list-group-item" id="_cart" href="/Cart/Cart" target="_blank">
+                    <p class="list-group-item-text text-center">购物车</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <!-- user infomation -->
+            <div class="row" id="userInfoDetails">
+                <form  class="form-inline">
+                    <table class="table_info ">
+                        <tr>
+                            <td class="table_name">
+                                用户ID：
+                            </td>
+                            <td>
+                               @Model.user.UserId
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_name">
+                                账号：
+                            </td>
+                            <td>
+                                @Model.user.UserName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_name">
+                                昵称：
+                            </td>
+                            <td>
+                                <input type="text" value='esd' id="nickname">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_name">
+                                日期：
+                            </td>
+                            <td>
+                                <input type="radio" name="gender" value="male" checked> <label>男</label>
+                                <input type="radio" name="gender" value="female"> <label>女</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_name">
+                                手机：
+                            </td>
+                            <td>
+                               @Model.user.phone
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_name">
+                                邮箱：
+                            </td>
+                            <td>
+                                @Model.user.email
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a class="btn btn-info" id="btnsave">保存</a>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!-- user infomation ending  -->
+            <!-- order infomation -->
+            <div class="row hidden" id="order_user">
+                <div class="tabbable" id="tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#panel-all" data-toggle="tab">全部订单</a>
+                        </li>
+                        <li>
+                            <a href="#panel-waitpay" data-toggle="tab">待付款</a>
+                        </li>
+                        <li>
+                            <a href="#panel-waitsend" data-toggle="tab">待发货</a>
+                        </li>
+                        <li>
+                            <a href="#panel-sended" data-toggle="tab">已发货</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-all">
+                            @foreach(var allitem in Model.vcenter){
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayFor(d=>allitem.orderdate)</th>
+                                        <th>订单号: @allitem.OrderID</th>
+                                        <th>单价</th>
+                                        <th>数量</th>
+                                        <th>实付款</th>
+                                        <th>订单状态</th>
+                                        <th><span class="glyphicon glyphicon-trash pull-right"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="@allitem.imagesUrl" width="120px" height="120px">
+                                        </td>
+                                        <td>
+                                            <p>专辑名：@allitem.albumname</p>
+                                            <p>歌手：@allitem.artistName</p>
+                                            <p>流派：@allitem.genreName</p>
+                                        </td>
+                                        <td>@allitem.unitprice</td>
+                                        <td>@allitem.quantity</td>
+                                        <td>￥</td>
+                                        <td></td>
+                                        <td>
+                                            <button class="btn btn-danger btnorderRemove" id="@allitem.OrderID">删除</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            }
+                        </div>
+                        <!-- 等待付款 -->
+                        <div class="tab-pane" id="panel-waitpay">
+                            @foreach(var waitpay in Model.waitPayOrder){
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@waitpay.orderdate</th>
+                                        <th>订单号: @waitpay.OrderID</th>
+                                        <th>单价</th>
+                                        <th>数量</th>
+                                        <th></th>
+                                        <th>订单状态</th>
+                                        <th><span class="glyphicon glyphicon-trash pull-right"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="@waitpay.imagesUrl" width="120px" height="120px">
+                                        </td>
+                                        <td>
+                                            <p>专辑名：@waitpay.albumname</p>
+                                            <p>歌手：@waitpay.artistName</p>
+                                            <p>流派：@waitpay.genreName</p>
+                                        </td>
+                                        <td>￥@waitpay.unitprice</td>
+                                        <td>@waitpay.quantity</td>
+                                        <td></td>
+                                        <td>待付款</td>
+                                        <td>
+                                            <button class="btn btn-danger">删除</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6"></td>
+                                        <td>
+                                            <button class="btn btn-info">去付款</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            }
+                        </div>
+                        <!-- 等待发货 -->
+                        <div class="tab-pane" id="panel-waitsend">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>2017-03-01</th>
+                                        <th>订单号: 3096990611476307</th>
+                                        <th>单价</th>
+                                        <th>数量</th>
+                                        <th>实付款</th>
+                                        <th>订单状态</th>
+                                        <th><span class="glyphicon glyphicon-trash pull-right"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="..\..\imgs\artist\EdSheeran.jpeg" width="120px" height="120px">
+                                        </td>
+                                        <td>
+                                            <p>专辑名：multiply</p>
+                                            <p>歌手：ed sheeran</p>
+                                            <p>流派：pop</p>
+                                            <p>地区：欧美</p>
+                                        </td>
+                                        <td>￥19</td>
+                                        <td>1</td>
+                                        <td>￥19</td>
+                                        <td>待发货</td>
+                                        <td>
+                                            <button class="btn btn-danger">提醒发货</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="..\..\imgs\album\avril_1.jpg" width="120px" height="120px">
+                                        </td>
+                                        <td>
+                                            <p>专辑名：multiply</p>
+                                            <p>歌手：ed sheeran</p>
+                                            <p>流派：pop</p>
+                                            <p>地区：欧美</p>
+                                        </td>
+                                        <td>￥19</td>
+                                        <td>1</td>
+                                        <td>￥19</td>
+                                        <td>待发货</td>
+                                        <td>
+                                            <button class="btn btn-danger">提醒发货</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6"></td>
+                                        <td>
+                                            <button class="btn btn-info">提醒发货</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- 已发货 -->
+                        <div class="tab-pane" id="panel-sended">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>2017-03-01</th>
+                                        <th>订单号: 3096990611476307</th>
+                                        <th>单价</th>
+                                        <th>数量</th>
+                                        <th>实付款</th>
+                                        <th>订单状态</th>
+                                        <th><span class="glyphicon glyphicon-trash pull-right"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img src="..\..\imgs\artist\EdSheeran.jpeg" width="120px" height="120px">
+                                        </td>
+                                        <td>
+                                            <p>专辑名：multiply</p>
+                                            <p>歌手：ed sheeran</p>
+                                            <p>流派：pop</p>
+                                            <p>地区：欧美</p>
+                                        </td>
+                                        <td>￥19</td>
+                                        <td>1</td>
+                                        <td>￥19</td>
+                                        <td>已发货</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="..\..\imgs\album\avril_1.jpg" width="120px" height="120px">
+                                        </td>
+                                        <td>
+                                            <p>专辑名：multiply</p>
+                                            <p>歌手：ed sheeran</p>
+                                            <p>流派：pop</p>
+                                            <p>地区：欧美</p>
+                                        </td>
+                                        <td>￥19</td>
+                                        <td>1</td>
+                                        <td>￥19</td>
+                                        <td>已发货</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- collection part  -->
+            <div class="row hidden" id="user_collection">
+                @foreach (var c in Model.collect)
+                {
+                <div class="col-sm-6 col-md-3 thumbnail">
+                    <a href="/Home/Product?id=@c.albumid">
+                        <img src="@c.imagesurl" alt="pic">
+                    </a>
+                    <div class="caption">
+                        <p>歌手： @c.artistname</p>
+                        <p>专辑：@c.albumname</p>
+                        <p id="cartBtn">
+                            <a class="btn btn-default btnremove" role="button" id="@c.albumid">
+                                移除
+                            </a>
+                            <a class="btn btn-default btncobuy"  id="@c.albumid">
+                                购买
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                }
+               
+            </div>
+            <!-- shopping cart  -->
+           
+        </div>
+    </div>
+    <hr>
+
+
+    <div class="row album">
+        <div class="col-sm-6 col-md-2">
+            <a href="" class="thumbnail">
+                <img src="..\..\imgs\album\ts1989.jpg">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a href="" class="thumbnail">
+                <img src="..\..\imgs\album\avril_1.jpg">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a href="" class="thumbnail">
+                <img src="..\..\imgs\album\taylor_1.jpg">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a href="" class="thumbnail">
+                <img src="..\..\imgs\album\adele_1.jpg">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a href="" class="thumbnail">
+                <img src="..\..\imgs\album\avril_2.jpg">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a href="" class="thumbnail">
+                <img src="..\..\imgs\album\taylor.jpg">
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E687E6D7-FD46-4C33-987B-6AF55072BA4F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UMusic</RootNamespace>
+    <AssemblyName>UMusic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\FunctionController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogOutController.cs" />
+    <Compile Include="Controllers\UserCenterController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\albumProc_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArtistDetails.cs" />
+    <Compile Include="Models\artistProc_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuthorizeFilterAttribute.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CartOrder.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\ListModel.cs" />
+    <Compile Include="Models\Local.cs" />
+    <Compile Include="Models\Music.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Music.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Music.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Music.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Music.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderAl.cs" />
+    <Compile Include="Models\proc_album_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_artist_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_calbum_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_genre_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_listat_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proc_mulTable_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_admin.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_advice.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_album.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_artist.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_cart.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_cartDetails.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_collection.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_genre.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_local.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_order.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_orderDetails.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_singleSong.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_user.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_userDetails.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserCenterModel.cs" />
+    <Compile Include="Models\view_cartItem.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\view_collection.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\view_OrderItem.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\view_UserCenterOrder.cs">
+      <DependentUpon>Music.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCenter\changePwd.aspx.cs">
+      <DependentUpon>changePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCenter\changePwd.aspx.designer.cs">
+      <DependentUpon>changePwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCenter\Collection.aspx.cs">
+      <DependentUpon>Collection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCenter\Collection.aspx.designer.cs">
+      <DependentUpon>Collection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCenter\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCenter\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCenter\OrderManager.aspx.cs">
+      <DependentUpon>OrderManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCenter\OrderManager.aspx.designer.cs">
+      <DependentUpon>OrderManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCenter\personInfo.aspx.cs">
+      <DependentUpon>personInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCenter\personInfo.aspx.designer.cs">
+      <DependentUpon>personInfo.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\background\chat.png" />
+    <Content Include="Content\background\site-background-image-file.jpg" />
+    <Content Include="Content\background\user.png" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <EntityDeploy Include="Models\Music.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Music.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="imgs\billboard.jpg" />
+    <Content Include="imgs\header.png" />
+    <Content Include="imgs\loading.gif" />
+    <Content Include="imgs\album\1000FormsofFear.png" />
+    <Content Include="imgs\album\12new.jpg" />
+    <Content Include="imgs\album\12_miracle.jpg" />
+    <Content Include="imgs\album\15.jpg" />
+    <Content Include="imgs\album\19.png" />
+    <Content Include="imgs\album\1989.jpg" />
+    <Content Include="imgs\album\21.png" />
+    <Content Include="imgs\album\238954.jpg" />
+    <Content Include="imgs\album\25.png" />
+    <Content Include="imgs\album\2Her.jpg" />
+    <Content Include="imgs\album\35xxxv.jpg" />
+    <Content Include="imgs\album\3.jpg" />
+    <Content Include="imgs\album\7mile.png" />
+    <Content Include="imgs\album\again.jpg" />
+    <Content Include="imgs\album\Aimer-DAWN.jpg" />
+    <Content Include="imgs\album\ALIVE.jpg" />
+    <Content Include="imgs\album\All_of_my_mind.jpg" />
+    <Content Include="imgs\album\Ambitions .jpg" />
+    <Content Include="imgs\album\Amy.jpg" />
+    <Content Include="imgs\album\AndEnd.jpg" />
+    <Content Include="imgs\album\angeldemon.jpg" />
+    <Content Include="imgs\album\Anthology.jpg" />
+    <Content Include="imgs\album\Atmosphere.jpg" />
+    <Content Include="imgs\album\AUGUST-GIRL.jpg" />
+    <Content Include="imgs\album\AvrilLavigne.jpg" />
+    <Content Include="imgs\album\ayou.jpg" />
+    <Content Include="imgs\album\Baby_Baby.jpg" />
+    <Content Include="imgs\album\bedstory.jpg" />
+    <Content Include="imgs\album\BeforeLong.jpg" />
+    <Content Include="imgs\album\Best Of.jpg" />
+    <Content Include="imgs\album\BEST-SELECTION-NON-STOP-MIX.jpg" />
+    <Content Include="imgs\album\Beyond_The_Memory.jpg" />
+    <Content Include="imgs\album\BIGBANG.jpg" />
+    <Content Include="imgs\album\BIGBANG2.jpg" />
+    <Content Include="imgs\album\Brave Shine.png" />
+    <Content Include="imgs\album\Can_You_Hear_Me.jpg" />
+    <Content Include="imgs\album\chandelier.jpg" />
+    <Content Include="imgs\album\charlie-puth-marvin-gaye-cover.jpg" />
+    <Content Include="imgs\album\Cheap House.jpg" />
+    <Content Include="imgs\album\Christmas-Song.jpg" />
+    <Content Include="imgs\album\Collection.jpg" />
+    <Content Include="imgs\album\Compass.jpg" />
+    <Content Include="imgs\album\dancer.jpg" />
+    <Content Include="imgs\album\dangerworld.jpg" />
+    <Content Include="imgs\album\daydream.jpg" />
+    <Content Include="imgs\album\daynight.jpg" />
+    <Content Include="imgs\album\deeploveu.jpg" />
+    <Content Include="imgs\album\DIGIMON-SONG-BEST-OF KOJI-WADA.jpg" />
+    <Content Include="imgs\album\DIORAMA.jpg" />
+    <Content Include="imgs\album\divided.jpg" />
+    <Content Include="imgs\album\DreamingOutLoud.jpg" />
+    <Content Include="imgs\album\Dreams.png" />
+    <Content Include="imgs\album\Ego.jpg" />
+    <Content Include="imgs\album\Entities.jpg" />
+    <Content Include="imgs\album\EXACT.jpg" />
+    <Content Include="imgs\album\EXO-EXODUS.jpg" />
+    <Content Include="imgs\album\EXPO.jpg" />
+    <Content Include="imgs\album\FAIRY_TAIL.jpg" />
+    <Content Include="imgs\album\Fallen.jpg" />
+    <Content Include="imgs\album\family.jpg" />
+    <Content Include="imgs\album\FANTASIA.jpg" />
+    <Content Include="imgs\album\fearless.jpg" />
+    <Content Include="imgs\album\fight.jpg" />
+    <Content Include="imgs\album\Found.jpg" />
+    <Content Include="imgs\album\fx-4-Walls.jpg" />
+    <Content Include="imgs\album\fx-electric-shock-cover.jpg" />
+    <Content Include="imgs\album\fx-red-light.jpg" />
+    <Content Include="imgs\album\gancui.jpg" />
+    <Content Include="imgs\album\gc_SOUNDTRACK.jpg" />
+    <Content Include="imgs\album\GhostStories.png" />
+    <Content Include="imgs\album\GoodbyeLullaby.png" />
+    <Content Include="imgs\album\Guilty-Crown.jpg" />
+    <Content Include="imgs\album\H3M.jpg" />
+    <Content Include="imgs\album\HealingIsDifficult.png" />
+    <Content Include="imgs\album\HitSongs.jpg" />
+    <Content Include="imgs\album\HOT.jpg" />
+    <Content Include="imgs\album\Hot_Summer.jpg" />
+    <Content Include="imgs\album\huashuqian.jpg" />
+    <Content Include="imgs\album\ifyou.jpg" />
+    <Content Include="imgs\album\Into-The-New World.jpg" />
+    <Content Include="imgs\album\In_Love.jpg" />
+    <Content Include="imgs\album\ItsMyDay.jpg" />
+    <Content Include="imgs\album\iTunesSession.jpg" />
+    <Content Include="imgs\album\IU-CHAT-SHIRE.jpg" />
+    <Content Include="imgs\album\IU-Modern-Times.jpg" />
+    <Content Include="imgs\album\J-Game.jpg" />
+    <Content Include="imgs\album\J.jpg" />
+    <Content Include="imgs\album\JanBeHorse.jpg" />
+    <Content Include="imgs\album\janno1.jpg" />
+    <Content Include="imgs\album\Janno2.jpg" />
+    <Content Include="imgs\album\janno3.jpg" />
+    <Content Include="imgs\album\Janno4.jpg" />
+    <Content Include="imgs\album\janno5.jpg" />
+    <Content Include="imgs\album\Janno6.jpg" />
+    <Content Include="imgs\album\jietie.jpg" />
+    <Content Include="imgs\album\JWT.jpg" />
+    <Content Include="imgs\album\july-time.jpg" />
+    <Content Include="imgs\album\Just-Say-So.png" />
+    <Content Include="imgs\album\Kaleidoscope.jpg" />
+    <Content Include="imgs\album\LetGoUnderMySkin.png" />
+    <Content Include="imgs\album\Libyus-Music-Sound-History.jpg" />
+    <Content Include="imgs\album\light.jpg" />
+    <Content Include="imgs\album\LikeICan.jpg" />
+    <Content Include="imgs\album\Live_Concert_Solar.jpg" />
+    <Content Include="imgs\album\LonelyHour.jpg" />
+    <Content Include="imgs\album\LooseChange.jpg" />
+    <Content Include="imgs\album\LOTTO.jpg" />
+    <Content Include="imgs\album\LOVE ME RIGHT.jpg" />
+    <Content Include="imgs\album\LOVEPEACE.jpg" />
+    <Content Include="imgs\album\love.png" />
+    <Content Include="imgs\album\MADE.jpg" />
+    <Content Include="imgs\album\MEMORIAL.jpg" />
+    <Content Include="imgs\album\Miku-Symphony.jpg" />
+    <Content Include="imgs\album\Mirror.jpg" />
+    <Content Include="imgs\album\Modern_Times - Epilogue.jpg" />
+    <Content Include="imgs\album\Monster.jpg" />
+    <Content Include="imgs\album\multiply.jpg" />
+    <Content Include="imgs\album\MySkin.jpg" />
+    <Content Include="imgs\album\NARUTO.jpg" />
+    <Content Include="imgs\album\Native.jpg" />
+    <Content Include="imgs\album\new.jpg" />
+    <Content Include="imgs\album\newearth.jpg" />
+    <Content Include="imgs\album\Niche.jpg" />
+    <Content Include="imgs\album\NineTrackMind.jpg" />
+    <Content Include="imgs\album\ninelie.jpg" />
+    <Content Include="imgs\album\NirvanaEP.jpg" />
+    <Content Include="imgs\album\notyet.jpg" />
+    <Content Include="imgs\album\noword.jpg" />
+    <Content Include="imgs\album\Oh-My-My.jpg" />
+    <Content Include="imgs\album\OrangeMoon.jpg" />
+    <Content Include="imgs\album\OSAKA.jpg" />
+    <Content Include="imgs\album\Overexposed.jpg" />
+    <Content Include="imgs\album\Parachutes.jpg" />
+    <Content Include="imgs\album\pei.jpg" />
+    <Content Include="imgs\album\perfectday.jpg" />
+    <Content Include="imgs\album\Pink_Tape.jpg" />
+    <Content Include="imgs\album\plus.jpg" />
+    <Content Include="imgs\album\PSY 7TH ALBUM.jpg" />
+    <Content Include="imgs\album\PSYFIVE.jpg" />
+    <Content Include="imgs\album\PSY_six_1.png" />
+    <Content Include="imgs\album\Queen_of_Pops.jpg" />
+    <Content Include="imgs\album\re-fly.jpg" />
+    <Content Include="imgs\album\red.jpg" />
+    <Content Include="imgs\album\Reloaded.jpg" />
+    <Content Include="imgs\album\Remastered.jpg" />
+    <Content Include="imgs\album\RISE.jpg" />
+    <Content Include="imgs\album\SeeYouAgain.png" />
+    <Content Include="imgs\album\shine.jpg" />
+    <Content Include="imgs\album\Singles.png" />
+    <Content Include="imgs\album\Skool_Luv_Affair_Special_Addition.jpg" />
+    <Content Include="imgs\album\Skyfall.png" />
+    <Content Include="imgs\album\sleep.jpg" />
+    <Content Include="imgs\album\Smile.jpg" />
+    <Content Include="imgs\album\Solar.jpg" />
+    <Content Include="imgs\album\SomeTypeofLove.png" />
+    <Content Include="imgs\album\SongsAboutJane.jpg" />
+    <Content Include="imgs\album\SOULBOY.jpg" />
+    <Content Include="imgs\album\sowhat.jpg" />
+    <Content Include="imgs\album\So_Good.jpg" />
+    <Content Include="imgs\album\speaknow.jpg" />
+    <Content Include="imgs\album\SPRING.jpg" />
+    <Content Include="imgs\album\stillfan.jpg" />
+    <Content Include="imgs\album\STILL_ALIVE.jpg" />
+    <Content Include="imgs\album\SUPER_LOVERS.jpg" />
+    <Content Include="imgs\album\T-ara_Remember.jpg" />
+    <Content Include="imgs\album\T-ara_Winter.jpg" />
+    <Content Include="imgs\album\taiktome.jpg" />
+    <Content Include="imgs\album\talklove.jpg" />
+    <Content Include="imgs\album\TaylorSwift.jpg" />
+    <Content Include="imgs\album\the best.jpg" />
+    <Content Include="imgs\album\The Otto Tunes.png" />
+    <Content Include="imgs\album\The-Best Selection-Welcome-Back.jpg" />
+    <Content Include="imgs\album\TheBestDamnThing.png" />
+    <Content Include="imgs\album\TheHead.png" />
+    <Content Include="imgs\album\TheKey.jpg" />
+    <Content Include="imgs\album\TheLostTapes.png" />
+    <Content Include="imgs\album\TheMoment.jpg" />
+    <Content Include="imgs\album\this-is-acting.jpg" />
+    <Content Include="imgs\album\ThunderboltFantasy.jpg" />
+    <Content Include="imgs\album\Timeless.jpg" />
+    <Content Include="imgs\album\today.jpg" />
+    <Content Include="imgs\album\Tonight.jpg" />
+    <Content Include="imgs\album\To_Heaven.jpg" />
+    <Content Include="imgs\album\UnderMySkin.png" />
+    <Content Include="imgs\album\v.png" />
+    <Content Include="imgs\album\Vermeer&amp;Escher.jpg" />
+    <Content Include="imgs\album\WakingUp.jpg" />
+    <Content Include="imgs\album\WeAreBorn.jpg" />
+    <Content Include="imgs\album\WhenWeWereYoung.jpg" />
+    <Content Include="imgs\album\WIND.jpg" />
+    <Content Include="imgs\album\WINGS.jpg" />
+    <Content Include="imgs\album\World.jpg" />
+    <Content Include="imgs\album\WritingsOntheWall.jpg" />
+    <Content Include="imgs\album\X&amp;Y.png" />
+    <Content Include="imgs\album\xue.jpg" />
+    <Content Include="imgs\album\youexists.jpg" />
+    <Content Include="imgs\album\Young-Foreve.jpg" />
+    <Content Include="imgs\album\YOUTH.jpg" />
+    <Content Include="imgs\album\YOU_NEVER_WALK_ALONE.jpg" />
+    <Content Include="imgs\album\克卜勒.jpg" />
+    <Content Include="imgs\album\绅士.jpg" />
+    <Content Include="imgs\album\跨时代.jpg" />
+    <Content Include="imgs\album\魔杰座.jpg" />
+    <Content Include="imgs\artist\Adele.jpg" />
+    <Content Include="imgs\artist\aimer.jpg" />
+    <Content Include="imgs\artist\avril-lavigne.png" />
+    <Content Include="imgs\artist\back-number.jpg" />
+    <Content Include="imgs\artist\BIGBANG.jpg" />
+    <Content Include="imgs\artist\caijianya.jpg" />
+    <Content Include="imgs\artist\caiyiling.jpg" />
+    <Content Include="imgs\artist\charlie-puth.jpg" />
+    <Content Include="imgs\artist\chenyixun.jpg" />
+    <Content Include="imgs\artist\chuyin.jpg" />
+    <Content Include="imgs\artist\datong.jpg" />
+    <Content Include="imgs\artist\DJ OKAWARI.png" />
+    <Content Include="imgs\artist\EGOIST.jpg" />
+    <Content Include="imgs\artist\EXO.jpg" />
+    <Content Include="imgs\artist\f%28x%29.jpg" />
+    <Content Include="imgs\artist\fangdan.jpg" />
+    <Content Include="imgs\artist\gaoli.jpg" />
+    <Content Include="imgs\artist\hetian.jpg" />
+    <Content Include="imgs\artist\IU.jpg" />
+    <Content Include="imgs\artist\jay.jpg" />
+    <Content Include="imgs\artist\jiushi.jpg" />
+    <Content Include="imgs\artist\jj.jpg" />
+    <Content Include="imgs\artist\july.jpg" />
+    <Content Include="imgs\artist\Maroon5.jpg" />
+    <Content Include="imgs\artist\nayin.jpg" />
+    <Content Include="imgs\artist\ONE OK ROCK.png" />
+    <Content Include="imgs\artist\onerepublic.jpg" />
+    <Content Include="imgs\artist\psy.jpg" />
+    <Content Include="imgs\artist\sam-smith.jpg" />
+    <Content Include="imgs\artist\shaonv.jpg" />
+    <Content Include="imgs\artist\sia.png" />
+    <Content Include="imgs\artist\sunyanzi.jpg" />
+    <Content Include="imgs\artist\T-ara.jpg" />
+    <Content Include="imgs\artist\Taeyang.jpg" />
+    <Content Include="imgs\artist\xuekaiqi.jpg" />
+    <Content Include="imgs\artist\xuezhiqian.jpg" />
+    <Content Include="imgs\artist\zeye.jpg" />
+    <Content Include="imgs\loading2.gif" />
+    <Content Include="imgs\logo\gelaimei.jpg" />
+    <Content Include="imgs\logo\wei.jpg" />
+    <Content Include="imgs\logo\zhi.jpg" />
+    <Content Include="Models\Music.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Music.edmx</DependentUpon>
+      <LastGenOutput>Music.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Music.edmx.diagram">
+      <DependentUpon>Music.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Music.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Music.edmx</DependentUpon>
+      <LastGenOutput>Music.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="imgs\album\adele_1.jpg" />
+    <Content Include="imgs\album\avril_1.jpg" />
+    <Content Include="imgs\album\avril_2.jpg" />
+    <Content Include="imgs\album\sohu.jpg" />
+    <Content Include="imgs\album\taylor.jpg" />
+    <Content Include="imgs\album\taylor_1.jpg" />
+    <Content Include="imgs\album\taylor_3.jpg" />
+    <Content Include="imgs\album\taylor_4.jpg" />
+    <Content Include="imgs\album\ts1989.jpg" />
+    <Content Include="imgs\album\zxj.jpg" />
+    <Content Include="imgs\artist\BMLG-BannerSite-BillboardAwards.jpg" />
+    <Content Include="imgs\artist\coldplay.jpg" />
+    <Content Include="imgs\artist\EdSheeran.jpeg" />
+    <Content Include="imgs\artist\EdSheeran_ATLREC_ArtistHeader1900x700v3.jpg" />
+    <Content Include="imgs\artist\Gwen-Stefani_2016_P2.jpg" />
+    <Content Include="imgs\artist\puth.jpg" />
+    <Content Include="imgs\artist\Ts.jpg" />
+    <Content Include="imgs\artist\TS_Banner_1989Live_Site.jpg" />
+    <Content Include="imgs\artist\TS_NewRomantics.jpg" />
+    <Content Include="imgs\artist\UMG_Web_CROP_FINAL_Sam_Smith1.jpg" />
+    <Content Include="Content\background\bg_index_new.jpg" />
+    <Content Include="Content\background\connect.jpg" />
+    <Content Include="Content\background\metal.jpg" />
+    <Content Include="imgs\logo\atl-logo.png" />
+    <Content Include="imgs\logo\bg_sq.png" />
+    <Content Include="imgs\logo\big_machine.PNG" />
+    <Content Include="imgs\logo\kugou.PNG" />
+    <Content Include="imgs\logo\qq.png" />
+    <Content Include="imgs\logo\Universal.jpg" />
+    <Content Include="imgs\logo\Universal.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dcalendar.picker.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\style.js" />
+    <Content Include="Scripts\validation.js" />
+    <Content Include="UserCenter\changePwd.aspx" />
+    <Content Include="UserCenter\Collection.aspx" />
+    <Content Include="UserCenter\Index.aspx" />
+    <Content Include="UserCenter\OrderManager.aspx" />
+    <Content Include="UserCenter\personInfo.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Shared\_HLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Artist.cshtml" />
+    <Content Include="Views\Home\Album.cshtml" />
+    <Content Include="Views\Home\ArtistLooking.cshtml" />
+    <Content Include="Views\Home\Genre.cshtml" />
+    <Content Include="Views\Home\Local.cshtml" />
+    <Content Include="Views\Function\Login.cshtml" />
+    <Content Include="Views\Function\Regist.cshtml" />
+    <Content Include="Views\Function\RegisterUser.cshtml" />
+    <Content Include="Views\Cart\Order.cshtml" />
+    <Content Include="Views\Cart\Pay.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\cartOrder.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\UserCenter\Index.cshtml" />
+    <Content Include="Views\Function\foundPwd.cshtml" />
+    <Content Include="Views\Function\Contact.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Admin\Admin.csproj">
+      <Project>{fac52986-48df-4ad3-ae0b-7eff7aaf5f5b}</Project>
+      <Name>Admin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3030</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3030/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

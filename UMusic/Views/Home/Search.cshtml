@@ -1,0 +1,73 @@
+﻿@model UMusic.Models.SearchResult
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+<div class="search">
+    <div class="container searchResult">
+        <div class="row" id="album">
+            <div class="row">
+                <blockquote>
+                    <label>专辑</label>
+                </blockquote>
+            </div>
+            <div class="row">
+                @foreach (var al in Model.album)
+                {
+                    <div class="col-sm-6 col-md-2">
+                        <a href="/Home/Product?id=@al.albumId" class="thumbnail">
+                            <img src="@al.imagesUrl" id="alimg"/>
+                        </a>
+                    </div>
+                }
+                <h2 class="text-info hidden" id="albumInfo">该关键字下无专辑搜索结果。。。</h2>
+            </div>
+        </div>
+        <div class="row" id="artist">
+            <div class="row">
+                <blockquote>
+                    <label>艺术家</label>
+                </blockquote>
+            </div>
+            <div class="row">
+                @foreach (var at in Model.artist)
+                {
+                    <div class="col-sm-6 col-md-2">
+                        <a href="/Home/Artist?id=@at.artistId" class="thumbnail">
+                            <img src="@at.imageUrl" id="atimg"/>
+                        </a>
+                    </div>
+                }
+                <h2 class="text-info hidden" id="artistInfo">该关键字下无艺人搜索结果。。。</h2>
+            </div>
+        </div>
+
+    </div>
+</div>
+<style>
+    .search {
+        height: 700px;
+        background: url(/Content/background/bg_index_new.jpg);
+    }
+    label {
+        color:#fff;
+    }
+</style>
+<script>
+    $(function () {
+        if ($("#atimg").attr("src") == null || $("#atimg").attr("src") == "") {
+           // alert("at");
+            $("#artistInfo").removeClass("hidden");
+        } else {
+            $("#artistInfo").addClass("hidden");
+        }
+        if ($("#alimg").attr("src") == null || $("#alimg").attr("src") == "")
+        {
+         //   alert("al");
+            $("#albumInfo").removeClass("hidden");
+        } else {
+            $("#albumInfo").addClass("hidden");
+        }
+       
+    });
+</script>

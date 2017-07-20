@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UMusicModelStoreContainer" CdmEntityContainer="UMusicEntities">
+    <EntitySetMapping Name="tb_advice">
+      <EntityTypeMapping TypeName="UMusicModel.tb_advice">
+        <MappingFragment StoreEntitySet="tb_advice">
+          <ScalarProperty Name="adviceId" ColumnName="adviceId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_album">
+      <EntityTypeMapping TypeName="UMusicModel.tb_album">
+        <MappingFragment StoreEntitySet="tb_album">
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="albumName" ColumnName="albumName" />
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="locationId" ColumnName="locationId" />
+          <ScalarProperty Name="addDate" ColumnName="addDate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imagesUrl" ColumnName="imagesUrl" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="leftNum" ColumnName="leftNum" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_artist">
+      <EntityTypeMapping TypeName="UMusicModel.tb_artist">
+        <MappingFragment StoreEntitySet="tb_artist">
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="decription" ColumnName="decription" />
+          <ScalarProperty Name="localId" ColumnName="localId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cart">
+      <EntityTypeMapping TypeName="UMusicModel.tb_cart">
+        <MappingFragment StoreEntitySet="tb_cart">
+          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cartDetails">
+      <EntityTypeMapping TypeName="UMusicModel.tb_cartDetails">
+        <MappingFragment StoreEntitySet="tb_cartDetails">
+          <ScalarProperty Name="cartDetailsId" ColumnName="cartDetailsId" />
+          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_collection">
+      <EntityTypeMapping TypeName="UMusicModel.tb_collection">
+        <MappingFragment StoreEntitySet="tb_collection">
+          <ScalarProperty Name="collectionId" ColumnName="collectionId" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_genre">
+      <EntityTypeMapping TypeName="UMusicModel.tb_genre">
+        <MappingFragment StoreEntitySet="tb_genre">
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+          <ScalarProperty Name="genreName" ColumnName="genreName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_local">
+      <EntityTypeMapping TypeName="UMusicModel.tb_local">
+        <MappingFragment StoreEntitySet="tb_local">
+          <ScalarProperty Name="localId" ColumnName="localId" />
+          <ScalarProperty Name="localName" ColumnName="localName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_order">
+      <EntityTypeMapping TypeName="UMusicModel.tb_order">
+        <MappingFragment StoreEntitySet="tb_order">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+          <ScalarProperty Name="total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_orderDetails">
+      <EntityTypeMapping TypeName="UMusicModel.tb_orderDetails">
+        <MappingFragment StoreEntitySet="tb_orderDetails">
+          <ScalarProperty Name="orderDeatilsId" ColumnName="orderDeatilsId" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_singleSong">
+      <EntityTypeMapping TypeName="UMusicModel.tb_singleSong">
+        <MappingFragment StoreEntitySet="tb_singleSong">
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="songName" ColumnName="songName" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_user">
+      <EntityTypeMapping TypeName="UMusicModel.tb_user">
+        <MappingFragment StoreEntitySet="tb_user">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="albumProc" FunctionName="UMusicModel.Store.albumProc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.albumProc_Result">
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="albumName" ColumnName="albumName" />
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="locationId" ColumnName="locationId" />
+          <ScalarProperty Name="addDate" ColumnName="addDate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imagesUrl" ColumnName="imagesUrl" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="leftNum" ColumnName="leftNum" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="artistProc" FunctionName="UMusicModel.Store.artistProc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.artistProc_Result">
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="decription" ColumnName="decription" />
+          <ScalarProperty Name="localId" ColumnName="localId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="view_cartItem">
+      <EntityTypeMapping TypeName="UMusicModel.view_cartItem">
+        <MappingFragment StoreEntitySet="view_cartItem">
+          <ScalarProperty Name="cartid" ColumnName="cartid" />
+          <ScalarProperty Name="albumid" ColumnName="albumid" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="genreName" ColumnName="genreName" />
+          <ScalarProperty Name="imagesUrl" ColumnName="imagesUrl" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="leftNum" ColumnName="leftNum" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="albumName" ColumnName="albumName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_album" FunctionName="UMusicModel.Store.proc_album">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.proc_album_Result">
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="albumName" ColumnName="albumName" />
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="locationId" ColumnName="locationId" />
+          <ScalarProperty Name="addDate" ColumnName="addDate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imagesUrl" ColumnName="imagesUrl" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="leftNum" ColumnName="leftNum" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_artist" FunctionName="UMusicModel.Store.proc_artist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.proc_artist_Result">
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="decription" ColumnName="decription" />
+          <ScalarProperty Name="localId" ColumnName="localId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_genre" FunctionName="UMusicModel.Store.proc_genre">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.proc_genre_Result">
+          <ScalarProperty Name="genreId" ColumnName="genreId" />
+          <ScalarProperty Name="genreName" ColumnName="genreName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_listat" FunctionName="UMusicModel.Store.proc_listat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.proc_listat_Result">
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="decription" ColumnName="decription" />
+          <ScalarProperty Name="localId" ColumnName="localId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_userid" FunctionName="UMusicModel.Store.proc_userid" />
+    <FunctionImportMapping FunctionImportName="GetCartaId" FunctionName="UMusicModel.Store.proc_userid" />
+    <EntitySetMapping Name="view_OrderItem">
+      <EntityTypeMapping TypeName="UMusicModel.view_OrderItem">
+        <MappingFragment StoreEntitySet="view_OrderItem">
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="genreName" ColumnName="genreName" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="albumname" ColumnName="albumname" />
+          <ScalarProperty Name="imagesUrl" ColumnName="imagesUrl" />
+          <ScalarProperty Name="albumid" ColumnName="albumid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_UserCenterOrder">
+      <EntityTypeMapping TypeName="UMusicModel.view_UserCenterOrder">
+        <MappingFragment StoreEntitySet="view_UserCenterOrder">
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="genreName" ColumnName="genreName" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="albumname" ColumnName="albumname" />
+          <ScalarProperty Name="imagesUrl" ColumnName="imagesUrl" />
+          <ScalarProperty Name="albumid" ColumnName="albumid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_collection">
+      <EntityTypeMapping TypeName="UMusicModel.view_collection">
+        <MappingFragment StoreEntitySet="view_collection">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="artistname" ColumnName="artistname" />
+          <ScalarProperty Name="artistid" ColumnName="artistid" />
+          <ScalarProperty Name="imagesurl" ColumnName="imagesurl" />
+          <ScalarProperty Name="albumid" ColumnName="albumid" />
+          <ScalarProperty Name="albumname" ColumnName="albumname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="UMusicModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_admin">
+      <EntityTypeMapping TypeName="UMusicModel.tb_admin">
+        <MappingFragment StoreEntitySet="tb_admin">
+          <ScalarProperty Name="adddate" ColumnName="adddate" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="adminName" ColumnName="adminName" />
+          <ScalarProperty Name="adminId" ColumnName="adminId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_calbum" FunctionName="UMusicModel.Store.proc_calbum">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.proc_calbum_Result">
+          <ScalarProperty Name="albumname" ColumnName="albumname" />
+          <ScalarProperty Name="albumid" ColumnName="albumid" />
+          <ScalarProperty Name="albumid1" ColumnName="albumid1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="UMusicModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="UMusicModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="UMusicModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="UMusicModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="UMusicModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UMusicModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="UMusicModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="UMusicModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="tb_userDetails">
+      <EntityTypeMapping TypeName="UMusicModel.tb_userDetails">
+        <MappingFragment StoreEntitySet="tb_userDetails">
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userDetailsId" ColumnName="userDetailsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

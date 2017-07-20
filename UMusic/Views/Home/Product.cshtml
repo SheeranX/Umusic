@@ -1,0 +1,161 @@
+﻿@model UMusic.Models.ListModel
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div id="bg_product">
+    <div class="container">
+        <div class="row">
+            <div class="container product_container">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                        <li>@Html.ActionLink("音乐专辑","Album","Home")</li>
+                        <li class="active">@Model.album.albumName</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="row product_details">
+            <div class="col-md-10">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="@Model.album.imagesUrl" alt="媒体对象" width="270px" height="270px" id="proimg">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">专辑：<label id="_albumname">@Model.album.albumName</label></h4>
+                        <p>专辑编号：<span id="_number">@Model.album.albumId</span></p>
+                        <p>歌&nbsp;&nbsp;&nbsp;&nbsp;手：<a href="/Home/Artist?Id=@Model.artist.artistId" target="_blank">@Model.artist.artistName</a></p>
+                        <p>发行时间：@Html.DisplayFor(model=>model.album.releaseDate)
+                       </p>
+                        <p>发行公司： Big Machine Records</p>
+                        <p class="hidden">库存：<span id="storage">@Model.album.leftNum</span></p>
+                        <p id="price">价格：￥@Model.album.price </p>
+                        <p class="row">
+                            <div class="col-md-3 input-group">
+                                <span class="input-group-addon" id="minus">-</span>
+                                <input type="number" class="form-control" value="1" min="1" id="qunatity">
+                                <span class="input-group-addon" id="plus">+</span>
+                            </div>
+                        </p>
+
+                        &nbsp;<a class="btn btn-danger" id="collect"><span class="glyphicon glyphicon-heart heart"></span> 收藏</a>
+                        <button class="btn btn-danger" id="addCart"><span class="glyphicon glyphicon-shopping-cart"></span> 添加购物车</button>
+                        <button class="btn btn-danger" id="buy"><span class="glyphicon glyphicon-inbox"></span> 立即购买</button>
+                        <p>&nbsp;</p>
+
+
+                    </div>
+                </div>
+                <div>
+                    <h4>专辑介绍:</h4>
+                    <p>
+                        @Model.album.description
+                    </p>
+                </div>
+                <div class="page-header">
+                    <h4>包含歌曲列表</h4>
+                </div>
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>歌曲标题</th>
+                                <th>时长</th>
+                                <th>歌手</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Welcome To New York</td>
+                                <td>03:32</td>
+                                <td>Taylor Swift</td>
+                            </tr>
+                            <tr>
+                                <td>Welcome To New York</td>
+                                <td>03:32</td>
+                                <td>Taylor Swift</td>
+                            </tr>
+                            <tr>
+                                <td>Welcome To New York</td>
+                                <td>03:32</td>
+                                <td>Taylor Swift</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h4>专辑推荐</h4>
+                    <div class="row">
+                        @{
+                            foreach (var album in Model.albumModel)
+                            {                 
+                            <div class="col-sm-6 col-md-2">
+                                <a href="/Home/Product?Id=@album.albumId" class="thumbnail">
+                                    <img src="@album.imagesUrl">
+                                </a>
+                            </div>
+                               
+                            }
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="center-block" id="hot">
+                    <label>Ta的其他热门专辑</label>
+                </div>
+                @{
+                   foreach(var album in Model.artistAl){
+                    <div class="media">
+                        <a class="pull-left" href="/Home/Product?Id=@album.albumId">
+                            <img class="media-object" src="@album.imagesUrl" alt="媒体对象" width="40px" height="40px">
+                        </a>
+                        <div class="media-body">
+                            <h5 class="media-heading">@album.albumName</h5>
+                            <p class="text-primary">@Html.DisplayFor(d=>album.releaseDate)</p>
+                        </div>
+                    </div>
+                        
+                   }
+                    
+                }
+               
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="myModalLabel">UMusic</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal_info"></p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="/Function/Login?backUrl=@Request.Url.ToString()">登录</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">一会儿再说</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="myModalimg" aria-hidden="true">
+    <div class="modal-dialog clearfix">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="@Model.album.imagesUrl" alt="我是图片"  class="img-responsive center-block" />
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<style>
+   
+</style>

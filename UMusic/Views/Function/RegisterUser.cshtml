@@ -1,0 +1,59 @@
+﻿@model UMusic.Models.tb_user
+@{
+    ViewBag.Title = "RegisterUser";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div class="container" id="registerSuccess">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <dl>
+                        <dt>
+                            <h1 class="text-success"><span class="glyphicon glyphicon-ok"></span> 恭喜，已注册成功</h1>
+                        </dt>
+                        <dd>
+                            <p>您登陆UMusic的账户名为：<a href="#">@Model.UserName</a>，您可以通过此账户享受便携的购物乐趣</p>
+                        </dd>
+                        <dd>
+                            <p>您也可以通过邮箱和手机号登录</p>
+                        </dd>
+                        <dd>&nbsp;</dd>
+                        <dd>
+                            <a href="/Function/Login" class="btn btn-info  btn-block">去登录</a>
+                        </dd>
+                    </dl>
+                   
+                </div>
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img src="~/imgs/billboard.jpg" />
+                        <div class="caption">
+
+                            <blockquote>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                </p> <small>Someone famous <cite>Source Title</cite></small>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+     #registerSuccess {
+        margin-top: 100px;
+    }
+    .thumbnail {
+        border:0px;
+        border-left:1px solid #ccc;
+    }
+    dl {
+        margin-top:120px;
+        margin-left:50px;
+    }
+</style>

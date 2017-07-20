@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UMusicModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="tb_advice">
+    <Key>
+      <PropertyRef Name="adviceId" />
+    </Key>
+    <Property Name="adviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="tb_user" Relationship="Self.FK_A_userid" FromRole="tb_advice" ToRole="tb_user" />
+  </EntityType>
+  <EntityType Name="tb_album">
+    <Key>
+      <PropertyRef Name="albumId" />
+    </Key>
+    <Property Name="albumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="albumName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="genreId" Type="Int32" Nullable="false" />
+    <Property Name="artistId" Type="Int32" Nullable="false" />
+    <Property Name="locationId" Type="Int32" Nullable="false" />
+    <Property Name="addDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="imagesUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="leftNum" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="releaseDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tb_artist" Relationship="Self.FK_artistid" FromRole="tb_album" ToRole="tb_artist" />
+    <NavigationProperty Name="tb_cartDetails" Relationship="Self.FK_C_albumId" FromRole="tb_album" ToRole="tb_cartDetails" />
+    <NavigationProperty Name="tb_collection" Relationship="Self.FK_Col_albumId" FromRole="tb_album" ToRole="tb_collection" />
+    <NavigationProperty Name="tb_genre" Relationship="Self.FK_genreid" FromRole="tb_album" ToRole="tb_genre" />
+    <NavigationProperty Name="tb_local" Relationship="Self.FK_locationId" FromRole="tb_album" ToRole="tb_local" />
+    <NavigationProperty Name="tb_orderDetails" Relationship="Self.FK_o_albumId" FromRole="tb_album" ToRole="tb_orderDetails" />
+    <NavigationProperty Name="tb_singleSong" Relationship="Self.FK_s_albumId" FromRole="tb_album" ToRole="tb_singleSong" />
+  </EntityType>
+  <EntityType Name="tb_artist">
+    <Key>
+      <PropertyRef Name="artistId" />
+    </Key>
+    <Property Name="artistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="artistName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="imageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="localId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_artistid" FromRole="tb_artist" ToRole="tb_album" />
+    <NavigationProperty Name="tb_local" Relationship="Self.FK_A_localId" FromRole="tb_artist" ToRole="tb_local" />
+  </EntityType>
+  <EntityType Name="tb_cart">
+    <Key>
+      <PropertyRef Name="cartId" />
+    </Key>
+    <Property Name="cartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tb_user" Relationship="Self.FK_Ca_userid" FromRole="tb_cart" ToRole="tb_user" />
+    <NavigationProperty Name="tb_cartDetails" Relationship="Self.FK_cartId" FromRole="tb_cart" ToRole="tb_cartDetails" />
+  </EntityType>
+  <EntityType Name="tb_cartDetails">
+    <Key>
+      <PropertyRef Name="cartDetailsId" />
+    </Key>
+    <Property Name="cartDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cartId" Type="Int32" Nullable="false" />
+    <Property Name="albumId" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_C_albumId" FromRole="tb_cartDetails" ToRole="tb_album" />
+    <NavigationProperty Name="tb_cart" Relationship="Self.FK_cartId" FromRole="tb_cartDetails" ToRole="tb_cart" />
+  </EntityType>
+  <EntityType Name="tb_collection">
+    <Key>
+      <PropertyRef Name="collectionId" />
+    </Key>
+    <Property Name="collectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="albumId" Type="Int32" Nullable="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_Col_albumId" FromRole="tb_collection" ToRole="tb_album" />
+    <NavigationProperty Name="tb_user" Relationship="Self.FK_C_userid" FromRole="tb_collection" ToRole="tb_user" />
+  </EntityType>
+  <EntityType Name="tb_genre">
+    <Key>
+      <PropertyRef Name="genreId" />
+    </Key>
+    <Property Name="genreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="genreName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_genreid" FromRole="tb_genre" ToRole="tb_album" />
+  </EntityType>
+  <EntityType Name="tb_local">
+    <Key>
+      <PropertyRef Name="localId" />
+    </Key>
+    <Property Name="localId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="localName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_locationId" FromRole="tb_local" ToRole="tb_album" />
+    <NavigationProperty Name="tb_artist" Relationship="Self.FK_A_localId" FromRole="tb_local" ToRole="tb_artist" />
+  </EntityType>
+  <EntityType Name="tb_order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="orderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="createDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="total" Type="Double" Nullable="false" />
+    <NavigationProperty Name="tb_orderDetails" Relationship="Self.FK_orderId" FromRole="tb_order" ToRole="tb_orderDetails" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tb_user" Relationship="UMusicModel.FK_o_userid" FromRole="tb_order" ToRole="tb_user" />
+  </EntityType>
+  <EntityType Name="tb_orderDetails">
+    <Key>
+      <PropertyRef Name="orderDeatilsId" />
+    </Key>
+    <Property Name="orderDeatilsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderId" Type="Int32" Nullable="false" />
+    <Property Name="albumId" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="unitprice" Type="Double" Nullable="false" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_o_albumId" FromRole="tb_orderDetails" ToRole="tb_album" />
+    <NavigationProperty Name="tb_order" Relationship="Self.FK_orderId" FromRole="tb_orderDetails" ToRole="tb_order" />
+  </EntityType>
+  <EntityType Name="tb_singleSong">
+    <Key>
+      <PropertyRef Name="songId" />
+    </Key>
+    <Property Name="songId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="albumId" Type="Int32" Nullable="false" />
+    <Property Name="songName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_album" Relationship="Self.FK_s_albumId" FromRole="tb_singleSong" ToRole="tb_album" />
+  </EntityType>
+  <EntityType Name="tb_user">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="createDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="tb_advice" Relationship="Self.FK_A_userid" FromRole="tb_user" ToRole="tb_advice" />
+    <NavigationProperty Name="tb_cart" Relationship="Self.FK_Ca_userid" FromRole="tb_user" ToRole="tb_cart" />
+    <NavigationProperty Name="tb_collection" Relationship="Self.FK_C_userid" FromRole="tb_user" ToRole="tb_collection" />
+    <NavigationProperty Name="tb_order" Relationship="UMusicModel.FK_o_userid" FromRole="tb_user" ToRole="tb_order" />
+    <NavigationProperty Name="tb_userDetails" Relationship="UMusicModel.FK_userid" FromRole="tb_user" ToRole="tb_userDetails" />
+  </EntityType>
+  <Association Name="FK_A_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_advice" Type="Self.tb_advice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_advice">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_artistid">
+    <End Role="tb_artist" Type="Self.tb_artist" Multiplicity="1" />
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_artist">
+        <PropertyRef Name="artistId" />
+      </Principal>
+      <Dependent Role="tb_album">
+        <PropertyRef Name="artistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_cartDetails" Type="Self.tb_cartDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_cartDetails">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Col_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_collection" Type="Self.tb_collection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_collection">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_genreid">
+    <End Role="tb_genre" Type="Self.tb_genre" Multiplicity="1" />
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_genre">
+        <PropertyRef Name="genreId" />
+      </Principal>
+      <Dependent Role="tb_album">
+        <PropertyRef Name="genreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_locationId">
+    <End Role="tb_local" Type="Self.tb_local" Multiplicity="1" />
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_local">
+        <PropertyRef Name="localId" />
+      </Principal>
+      <Dependent Role="tb_album">
+        <PropertyRef Name="locationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_o_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_orderDetails" Type="Self.tb_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_orderDetails">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_s_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_singleSong" Type="Self.tb_singleSong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_singleSong">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A_localId">
+    <End Role="tb_local" Type="Self.tb_local" Multiplicity="1" />
+    <End Role="tb_artist" Type="Self.tb_artist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_local">
+        <PropertyRef Name="localId" />
+      </Principal>
+      <Dependent Role="tb_artist">
+        <PropertyRef Name="localId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ca_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_cart">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cartId">
+    <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="1" />
+    <End Role="tb_cartDetails" Type="Self.tb_cartDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cart">
+        <PropertyRef Name="cartId" />
+      </Principal>
+      <Dependent Role="tb_cartDetails">
+        <PropertyRef Name="cartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_collection" Type="Self.tb_collection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_collection">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderId">
+    <End Role="tb_order" Type="Self.tb_order" Multiplicity="1" />
+    <End Role="tb_orderDetails" Type="Self.tb_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_order">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="tb_orderDetails">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UMusicEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_advice" EntityType="Self.tb_advice" />
+    <EntitySet Name="tb_album" EntityType="Self.tb_album" />
+    <EntitySet Name="tb_artist" EntityType="Self.tb_artist" />
+    <EntitySet Name="tb_cart" EntityType="Self.tb_cart" />
+    <EntitySet Name="tb_cartDetails" EntityType="Self.tb_cartDetails" />
+    <EntitySet Name="tb_collection" EntityType="Self.tb_collection" />
+    <EntitySet Name="tb_genre" EntityType="Self.tb_genre" />
+    <EntitySet Name="tb_local" EntityType="Self.tb_local" />
+    <EntitySet Name="tb_order" EntityType="Self.tb_order" />
+    <EntitySet Name="tb_orderDetails" EntityType="Self.tb_orderDetails" />
+    <EntitySet Name="tb_singleSong" EntityType="Self.tb_singleSong" />
+    <EntitySet Name="tb_user" EntityType="Self.tb_user" />
+    <AssociationSet Name="FK_A_userid" Association="Self.FK_A_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_advice" EntitySet="tb_advice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_artistid" Association="Self.FK_artistid">
+      <End Role="tb_artist" EntitySet="tb_artist" />
+      <End Role="tb_album" EntitySet="tb_album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_albumId" Association="Self.FK_C_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_cartDetails" EntitySet="tb_cartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Col_albumId" Association="Self.FK_Col_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_collection" EntitySet="tb_collection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_genreid" Association="Self.FK_genreid">
+      <End Role="tb_genre" EntitySet="tb_genre" />
+      <End Role="tb_album" EntitySet="tb_album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_locationId" Association="Self.FK_locationId">
+      <End Role="tb_local" EntitySet="tb_local" />
+      <End Role="tb_album" EntitySet="tb_album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_o_albumId" Association="Self.FK_o_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_orderDetails" EntitySet="tb_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_s_albumId" Association="Self.FK_s_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_singleSong" EntitySet="tb_singleSong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A_localId" Association="Self.FK_A_localId">
+      <End Role="tb_local" EntitySet="tb_local" />
+      <End Role="tb_artist" EntitySet="tb_artist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ca_userid" Association="Self.FK_Ca_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_cart" EntitySet="tb_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cartId" Association="Self.FK_cartId">
+      <End Role="tb_cart" EntitySet="tb_cart" />
+      <End Role="tb_cartDetails" EntitySet="tb_cartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_userid" Association="Self.FK_C_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_collection" EntitySet="tb_collection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderId" Association="Self.FK_orderId">
+      <End Role="tb_order" EntitySet="tb_order" />
+      <End Role="tb_orderDetails" EntitySet="tb_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_o_userid" Association="UMusicModel.FK_o_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_order" EntitySet="tb_order" />
+    </AssociationSet>
+    <FunctionImport Name="albumProc" ReturnType="Collection(UMusicModel.albumProc_Result)">
+      <Parameter Name="albumId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="artistProc" ReturnType="Collection(UMusicModel.artistProc_Result)">
+      <Parameter Name="artistId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="view_cartItem" EntityType="UMusicModel.view_cartItem" />
+    <FunctionImport Name="proc_album" ReturnType="Collection(UMusicModel.proc_album_Result)">
+      <Parameter Name="orderid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_artist" ReturnType="Collection(UMusicModel.proc_artist_Result)">
+      <Parameter Name="orderid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_genre" ReturnType="Collection(UMusicModel.proc_genre_Result)">
+      <Parameter Name="orderid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_listat" ReturnType="Collection(UMusicModel.proc_listat_Result)">
+      <Parameter Name="artistId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_mulTable" ReturnType="Collection(UMusicModel.proc_mulTable_Result)" />
+    <FunctionImport Name="proc_userid" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetCartaId" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="view_OrderItem" EntityType="UMusicModel.view_OrderItem" />
+    <EntitySet Name="view_UserCenterOrder" EntityType="UMusicModel.view_UserCenterOrder" />
+    <EntitySet Name="view_collection" EntityType="UMusicModel.view_collection" />
+    <EntitySet Name="sysdiagrams" EntityType="UMusicModel.sysdiagrams" />
+    <EntitySet Name="tb_admin" EntityType="UMusicModel.tb_admin" />
+    <FunctionImport Name="proc_calbum" ReturnType="Collection(UMusicModel.proc_calbum_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(UMusicModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(UMusicModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="tb_userDetails" EntityType="UMusicModel.tb_userDetails" />
+    <AssociationSet Name="FK_userid" Association="UMusicModel.FK_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_userDetails" EntitySet="tb_userDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_o_userid">
+    <End Type="UMusicModel.tb_user" Role="tb_user" Multiplicity="1" />
+    <End Type="UMusicModel.tb_order" Role="tb_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_order">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="albumProc_Result">
+    <Property Type="Int32" Name="albumId" Nullable="false" />
+    <Property Type="String" Name="albumName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="genreId" Nullable="false" />
+    <Property Type="Int32" Name="artistId" Nullable="false" />
+    <Property Type="Int32" Name="locationId" Nullable="false" />
+    <Property Type="DateTime" Name="addDate" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="false" />
+    <Property Type="String" Name="imagesUrl" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="leftNum" Nullable="false" />
+    <Property Type="String" Name="description" Nullable="false" MaxLength="Max" />
+    <Property Type="DateTime" Name="releaseDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="artistProc_Result">
+    <Property Type="Int32" Name="artistId" Nullable="false" />
+    <Property Type="String" Name="artistName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="imageUrl" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="decription" Nullable="false" MaxLength="Max" />
+    <Property Type="Int32" Name="localId" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="view_cartItem">
+    <Key>
+      <PropertyRef Name="albumName" />
+      <PropertyRef Name="artistName" />
+      <PropertyRef Name="leftNum" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="imagesUrl" />
+      <PropertyRef Name="genreName" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="cartid" />
+    </Key>
+    <Property Name="albumName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="artistName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="leftNum" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="imagesUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genreName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="albumid" Type="Int32" Nullable="false" />
+    <Property Name="cartid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="proc_album_Result">
+    <Property Type="Int32" Name="albumId" Nullable="false" />
+    <Property Type="String" Name="albumName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="genreId" Nullable="false" />
+    <Property Type="Int32" Name="artistId" Nullable="false" />
+    <Property Type="Int32" Name="locationId" Nullable="false" />
+    <Property Type="DateTime" Name="addDate" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="false" />
+    <Property Type="String" Name="imagesUrl" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="leftNum" Nullable="false" />
+    <Property Type="String" Name="description" Nullable="false" MaxLength="Max" />
+    <Property Type="DateTime" Name="releaseDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_artist_Result">
+    <Property Type="Int32" Name="artistId" Nullable="false" />
+    <Property Type="String" Name="artistName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="imageUrl" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="decription" Nullable="false" MaxLength="Max" />
+    <Property Type="Int32" Name="localId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="proc_genre_Result">
+    <Property Type="Int32" Name="genreId" Nullable="false" />
+    <Property Type="String" Name="genreName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="proc_listat_Result">
+    <Property Type="Int32" Name="artistId" Nullable="false" />
+    <Property Type="String" Name="artistName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="imageUrl" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="decription" Nullable="false" MaxLength="Max" />
+    <Property Type="Int32" Name="localId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="proc_mulTable_Result">
+    <Property Type="String" Name="albumName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="artistName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="leftNum" Nullable="false" />
+    <Property Type="Int32" Name="quantity" Nullable="false" />
+    <Property Type="String" Name="imagesUrl" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="genreName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="view_OrderItem">
+    <Key>
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="imagesUrl" />
+      <PropertyRef Name="albumname" />
+      <PropertyRef Name="artistName" />
+      <PropertyRef Name="genreName" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="unitprice" />
+      <PropertyRef Name="orderdate" />
+    </Key>
+    <Property Name="albumid" Type="Int32" Nullable="false" />
+    <Property Name="imagesUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="albumname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="artistName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genreName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="unitprice" Type="Double" Nullable="false" />
+    <Property Name="orderdate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="view_UserCenterOrder">
+    <Key>
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="imagesUrl" />
+      <PropertyRef Name="albumname" />
+      <PropertyRef Name="artistName" />
+      <PropertyRef Name="genreName" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="unitprice" />
+      <PropertyRef Name="orderdate" />
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="OrderStatus" />
+    </Key>
+    <Property Name="albumid" Type="Int32" Nullable="false" />
+    <Property Name="imagesUrl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="albumname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="artistName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="genreName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="unitprice" Type="Double" Nullable="false" />
+    <Property Name="orderdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="view_collection">
+    <Key>
+      <PropertyRef Name="albumname" />
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="imagesurl" />
+      <PropertyRef Name="artistid" />
+      <PropertyRef Name="artistname" />
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="albumname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="albumid" Type="Int32" Nullable="false" />
+    <Property Name="imagesurl" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="artistid" Type="Int32" Nullable="false" />
+    <Property Name="artistname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tb_admin">
+    <Key>
+      <PropertyRef Name="adminId" />
+    </Key>
+    <Property Name="adminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adminName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="adddate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="proc_calbum_Result">
+    <Property Type="String" Name="albumname" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="albumid" Nullable="false" />
+    <Property Type="Int32" Name="albumid1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tb_userDetails">
+    <Key>
+      <PropertyRef Name="userDetailsId" />
+    </Key>
+    <Property Name="userDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nickname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_user" Relationship="UMusicModel.FK_userid" FromRole="tb_userDetails" ToRole="tb_user" />
+  </EntityType>
+  <Association Name="FK_userid">
+    <End Type="UMusicModel.tb_user" Role="tb_user" Multiplicity="1" />
+    <End Type="UMusicModel.tb_userDetails" Role="tb_userDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_userDetails">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,73 @@
+﻿@model UMusic.Models.OrderAl
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_HLayout.cshtml";
+}
+
+<div class="container order_container">
+    <h3 class="page-header"><span class="glyphicon glyphicon-list-alt"></span> 订单</h3>
+    <div class="row well">
+        <table class="table table-bordered">
+            <caption>订单确认</caption>
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>编号</th>
+                    <th>数量</th>
+                    <th>单价</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var it in Model.item){
+                <tr>
+                    <td>
+                        <div class="media">
+                            <a class="pull-left" href="/Home/Product?id=@it.albumid">
+                                <img class="media-object" src="@it.imagesUrl" alt="媒体对象" width="100px" height="100px">
+                            </a>
+                            <div class="media-body">
+                                <p class="media-heading">专辑：@it.albumname</p>
+                                <p>歌&nbsp;&nbsp;&nbsp;&nbsp;手：@it.artistName</p>
+                                <p>歌曲流派:@it.genreName</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@it.albumid</td>
+                    <td>@it.quantity</td>
+                    <td>@it.unitprice</td>
+                </tr>
+                      }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>
+                        总&nbsp;&nbsp;价：
+                    </td>
+                    <td>
+                        ￥@ViewBag.total
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="/Cart/Pay?id=@ViewBag.id">付款</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="row">
+        @foreach(var at in Model.liat){
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <a href="/Home/Artist?id=@at.artistId">
+                            <img src="@at.imageUrl">
+                        </a>
+                        <div class="caption">
+                            <div class="caption">
+                                <h3>@at.artistName</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             }
+    </div>
+</div>

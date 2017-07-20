@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UMusicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tb_admin">
+    <Key>
+      <PropertyRef Name="adminId" />
+    </Key>
+    <Property Name="adminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adminName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="adddate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_advice">
+    <Key>
+      <PropertyRef Name="adviceId" />
+    </Key>
+    <Property Name="adviceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="content" Type="ntext" Nullable="false" />
+    <Property Name="createDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_album">
+    <Key>
+      <PropertyRef Name="albumId" />
+    </Key>
+    <Property Name="albumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="albumName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="genreId" Type="int" Nullable="false" />
+    <Property Name="artistId" Type="int" Nullable="false" />
+    <Property Name="locationId" Type="int" Nullable="false" />
+    <Property Name="addDate" Type="date" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="imagesUrl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="leftNum" Type="int" Nullable="false" />
+    <Property Name="description" Type="ntext" Nullable="false" />
+    <Property Name="releaseDate" Type="date" />
+  </EntityType>
+  <EntityType Name="tb_artist">
+    <Key>
+      <PropertyRef Name="artistId" />
+    </Key>
+    <Property Name="artistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="artistName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="imageUrl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="decription" Type="text" Nullable="false" />
+    <Property Name="localId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_cart">
+    <Key>
+      <PropertyRef Name="cartId" />
+    </Key>
+    <Property Name="cartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_cartDetails">
+    <Key>
+      <PropertyRef Name="cartDetailsId" />
+    </Key>
+    <Property Name="cartDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cartId" Type="int" Nullable="false" />
+    <Property Name="albumId" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_collection">
+    <Key>
+      <PropertyRef Name="collectionId" />
+    </Key>
+    <Property Name="collectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="albumId" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_genre">
+    <Key>
+      <PropertyRef Name="genreId" />
+    </Key>
+    <Property Name="genreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="genreName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_local">
+    <Key>
+      <PropertyRef Name="localId" />
+    </Key>
+    <Property Name="localId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="localName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_order">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderdate" Type="date" Nullable="false" />
+    <Property Name="orderStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="createDate" Type="date" Nullable="false" />
+    <Property Name="total" Type="float" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_orderDetails">
+    <Key>
+      <PropertyRef Name="orderDeatilsId" />
+    </Key>
+    <Property Name="orderDeatilsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderId" Type="int" Nullable="false" />
+    <Property Name="albumId" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="unitprice" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_singleSong">
+    <Key>
+      <PropertyRef Name="songId" />
+    </Key>
+    <Property Name="songId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="albumId" Type="int" Nullable="false" />
+    <Property Name="songName" Type="nvarchar" MaxLength="50" />
+    <Property Name="duration" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_user">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="createDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_userDetails">
+    <Key>
+      <PropertyRef Name="userDetailsId" />
+    </Key>
+    <Property Name="userDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="birthday" Type="date" Nullable="false" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="location" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UMusic.dbo.view_cartItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_cartItem">
+    <Key>
+      <PropertyRef Name="albumName" />
+      <PropertyRef Name="artistName" />
+      <PropertyRef Name="leftNum" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="imagesUrl" />
+      <PropertyRef Name="genreName" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="cartid" />
+    </Key>
+    <Property Name="albumName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="artistName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="leftNum" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="imagesUrl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="genreName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="albumid" Type="int" Nullable="false" />
+    <Property Name="cartid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UMusic.dbo.view_collection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_collection">
+    <Key>
+      <PropertyRef Name="albumname" />
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="imagesurl" />
+      <PropertyRef Name="artistid" />
+      <PropertyRef Name="artistname" />
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="albumname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="albumid" Type="int" Nullable="false" />
+    <Property Name="imagesurl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="artistid" Type="int" Nullable="false" />
+    <Property Name="artistname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UMusic.dbo.view_OrderItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_OrderItem">
+    <Key>
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="imagesUrl" />
+      <PropertyRef Name="albumname" />
+      <PropertyRef Name="artistName" />
+      <PropertyRef Name="genreName" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="unitprice" />
+      <PropertyRef Name="orderdate" />
+    </Key>
+    <Property Name="albumid" Type="int" Nullable="false" />
+    <Property Name="imagesUrl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="albumname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="artistName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="genreName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="unitprice" Type="float" Nullable="false" />
+    <Property Name="orderdate" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'UMusic.dbo.view_UserCenterOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_UserCenterOrder">
+    <Key>
+      <PropertyRef Name="albumid" />
+      <PropertyRef Name="imagesUrl" />
+      <PropertyRef Name="albumname" />
+      <PropertyRef Name="artistName" />
+      <PropertyRef Name="genreName" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="quantity" />
+      <PropertyRef Name="unitprice" />
+      <PropertyRef Name="orderdate" />
+      <PropertyRef Name="userid" />
+      <PropertyRef Name="OrderStatus" />
+    </Key>
+    <Property Name="albumid" Type="int" Nullable="false" />
+    <Property Name="imagesUrl" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="albumname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="artistName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="genreName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="unitprice" Type="float" Nullable="false" />
+    <Property Name="orderdate" Type="date" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_A_localId">
+    <End Role="tb_local" Type="Self.tb_local" Multiplicity="1" />
+    <End Role="tb_artist" Type="Self.tb_artist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_local">
+        <PropertyRef Name="localId" />
+      </Principal>
+      <Dependent Role="tb_artist">
+        <PropertyRef Name="localId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_A_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_advice" Type="Self.tb_advice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_advice">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_artistid">
+    <End Role="tb_artist" Type="Self.tb_artist" Multiplicity="1" />
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_artist">
+        <PropertyRef Name="artistId" />
+      </Principal>
+      <Dependent Role="tb_album">
+        <PropertyRef Name="artistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_cartDetails" Type="Self.tb_cartDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_cartDetails">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_C_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_collection" Type="Self.tb_collection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_collection">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ca_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_cart">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cartId">
+    <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="1" />
+    <End Role="tb_cartDetails" Type="Self.tb_cartDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cart">
+        <PropertyRef Name="cartId" />
+      </Principal>
+      <Dependent Role="tb_cartDetails">
+        <PropertyRef Name="cartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Col_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_collection" Type="Self.tb_collection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_collection">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_genreid">
+    <End Role="tb_genre" Type="Self.tb_genre" Multiplicity="1" />
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_genre">
+        <PropertyRef Name="genreId" />
+      </Principal>
+      <Dependent Role="tb_album">
+        <PropertyRef Name="genreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_locationId">
+    <End Role="tb_local" Type="Self.tb_local" Multiplicity="1" />
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_local">
+        <PropertyRef Name="localId" />
+      </Principal>
+      <Dependent Role="tb_album">
+        <PropertyRef Name="locationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_o_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_orderDetails" Type="Self.tb_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_orderDetails">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_o_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_order" Type="Self.tb_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_order">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderId">
+    <End Role="tb_order" Type="Self.tb_order" Multiplicity="1" />
+    <End Role="tb_orderDetails" Type="Self.tb_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_order">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="tb_orderDetails">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_s_albumId">
+    <End Role="tb_album" Type="Self.tb_album" Multiplicity="1" />
+    <End Role="tb_singleSong" Type="Self.tb_singleSong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_album">
+        <PropertyRef Name="albumId" />
+      </Principal>
+      <Dependent Role="tb_singleSong">
+        <PropertyRef Name="albumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_userid">
+    <End Role="tb_user" Type="Self.tb_user" Multiplicity="1" />
+    <End Role="tb_userDetails" Type="Self.tb_userDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_user">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="tb_userDetails">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="albumProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="albumId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="artistProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="artistId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="proc_album" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_artist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_calbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_genre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_listat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="artistId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_userid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="UMusicModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_admin" EntityType="Self.tb_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_advice" EntityType="Self.tb_advice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_album" EntityType="Self.tb_album" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_artist" EntityType="Self.tb_artist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cart" EntityType="Self.tb_cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cartDetails" EntityType="Self.tb_cartDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_collection" EntityType="Self.tb_collection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_genre" EntityType="Self.tb_genre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_local" EntityType="Self.tb_local" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_order" EntityType="Self.tb_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_orderDetails" EntityType="Self.tb_orderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_singleSong" EntityType="Self.tb_singleSong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_user" EntityType="Self.tb_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_userDetails" EntityType="Self.tb_userDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="view_cartItem" EntityType="Self.view_cartItem" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[view_cartItem].[albumName] AS [albumName], 
+[view_cartItem].[artistName] AS [artistName], 
+[view_cartItem].[leftNum] AS [leftNum], 
+[view_cartItem].[quantity] AS [quantity], 
+[view_cartItem].[imagesUrl] AS [imagesUrl], 
+[view_cartItem].[genreName] AS [genreName], 
+[view_cartItem].[price] AS [price], 
+[view_cartItem].[albumid] AS [albumid], 
+[view_cartItem].[cartid] AS [cartid]
+FROM [dbo].[view_cartItem] AS [view_cartItem]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_collection" EntityType="Self.view_collection" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[view_collection].[albumname] AS [albumname], 
+[view_collection].[albumid] AS [albumid], 
+[view_collection].[imagesurl] AS [imagesurl], 
+[view_collection].[artistid] AS [artistid], 
+[view_collection].[artistname] AS [artistname], 
+[view_collection].[userid] AS [userid]
+FROM [dbo].[view_collection] AS [view_collection]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_OrderItem" EntityType="Self.view_OrderItem" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[view_OrderItem].[albumid] AS [albumid], 
+[view_OrderItem].[imagesUrl] AS [imagesUrl], 
+[view_OrderItem].[albumname] AS [albumname], 
+[view_OrderItem].[artistName] AS [artistName], 
+[view_OrderItem].[genreName] AS [genreName], 
+[view_OrderItem].[OrderID] AS [OrderID], 
+[view_OrderItem].[quantity] AS [quantity], 
+[view_OrderItem].[unitprice] AS [unitprice], 
+[view_OrderItem].[orderdate] AS [orderdate]
+FROM [dbo].[view_OrderItem] AS [view_OrderItem]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_UserCenterOrder" EntityType="Self.view_UserCenterOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[view_UserCenterOrder].[albumid] AS [albumid], 
+[view_UserCenterOrder].[imagesUrl] AS [imagesUrl], 
+[view_UserCenterOrder].[albumname] AS [albumname], 
+[view_UserCenterOrder].[artistName] AS [artistName], 
+[view_UserCenterOrder].[genreName] AS [genreName], 
+[view_UserCenterOrder].[OrderID] AS [OrderID], 
+[view_UserCenterOrder].[quantity] AS [quantity], 
+[view_UserCenterOrder].[unitprice] AS [unitprice], 
+[view_UserCenterOrder].[orderdate] AS [orderdate], 
+[view_UserCenterOrder].[userid] AS [userid], 
+[view_UserCenterOrder].[OrderStatus] AS [OrderStatus]
+FROM [dbo].[view_UserCenterOrder] AS [view_UserCenterOrder]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_A_localId" Association="Self.FK_A_localId">
+      <End Role="tb_local" EntitySet="tb_local" />
+      <End Role="tb_artist" EntitySet="tb_artist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_A_userid" Association="Self.FK_A_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_advice" EntitySet="tb_advice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_artistid" Association="Self.FK_artistid">
+      <End Role="tb_artist" EntitySet="tb_artist" />
+      <End Role="tb_album" EntitySet="tb_album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_albumId" Association="Self.FK_C_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_cartDetails" EntitySet="tb_cartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_C_userid" Association="Self.FK_C_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_collection" EntitySet="tb_collection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ca_userid" Association="Self.FK_Ca_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_cart" EntitySet="tb_cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cartId" Association="Self.FK_cartId">
+      <End Role="tb_cart" EntitySet="tb_cart" />
+      <End Role="tb_cartDetails" EntitySet="tb_cartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Col_albumId" Association="Self.FK_Col_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_collection" EntitySet="tb_collection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_genreid" Association="Self.FK_genreid">
+      <End Role="tb_genre" EntitySet="tb_genre" />
+      <End Role="tb_album" EntitySet="tb_album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_locationId" Association="Self.FK_locationId">
+      <End Role="tb_local" EntitySet="tb_local" />
+      <End Role="tb_album" EntitySet="tb_album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_o_albumId" Association="Self.FK_o_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_orderDetails" EntitySet="tb_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_o_userid" Association="Self.FK_o_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_order" EntitySet="tb_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderId" Association="Self.FK_orderId">
+      <End Role="tb_order" EntitySet="tb_order" />
+      <End Role="tb_orderDetails" EntitySet="tb_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_s_albumId" Association="Self.FK_s_albumId">
+      <End Role="tb_album" EntitySet="tb_album" />
+      <End Role="tb_singleSong" EntitySet="tb_singleSong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_userid" Association="Self.FK_userid">
+      <End Role="tb_user" EntitySet="tb_user" />
+      <End Role="tb_userDetails" EntitySet="tb_userDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
