@@ -1,0 +1,10 @@
+本网站使用MVC4+EntityFramework5 进行开发
+
+使用PagedListPager进行分页（需要从nuget安装）
+
+在1366x768下显示效果最佳
+
+管理员账号：ed 密码：12346
+
+测试用户账号：edsheeran 密码：111111
+
