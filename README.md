@@ -17,4 +17,3 @@ It include two projects
 Admin use WebFrom 
 UMusic use MVC4 
 
-Here is my ambition is reinvent the construre structure to make it become more scalability by use DI 
